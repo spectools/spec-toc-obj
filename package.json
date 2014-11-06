@@ -1,0 +1,27 @@
+{
+  "name": "spec-toc-obj",
+  "version": "0.1.0",
+  "description": "Get the uppermost list element of the Table of Content of a W3C or WHATWG spec.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha -u tdd --timeout 10000 ./test/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tobie/spec-toc-obj"
+  },
+  "keywords": [
+    "spec",
+    "toc"
+  ],
+  "devDependencies": {
+    "jsdom": "^1.0.3",
+    "mocha": "^1.21.5"
+  },
+  "author": "Tobie Langel <tobie.langel@gmail.com>",
+  "license": "Apache License, Version 2.0",
+  "bugs": {
+    "url": "https://github.com/tobie/spec-toc-obj/issues"
+  },
+  "homepage": "https://github.com/tobie/spec-toc-obj"
+}
