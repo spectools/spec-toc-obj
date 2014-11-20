@@ -1,7 +1,7 @@
 {
   "name": "spec-toc-obj",
-  "version": "0.1.0",
-  "description": "Get the uppermost list element of the Table of Content of a W3C or WHATWG spec.",
+  "version": "0.2.0",
+  "description": "Get all uppermost list element of the Table of Content of a W3C or WHATWG spec and returns them in a document fragment.",
   "main": "index.js",
   "scripts": {
     "test": "mocha -u tdd --timeout 10000 ./test/*.js"

@@ -1,8 +1,8 @@
 Spec-toc-obj
 ============
 
-Takes a `window` object and returns the uppermost list container of the Table
-of Content of a W3C or WHATWG spec.
+Takes a `window` object and returns referencs to all first level list containers
+of the Table of Content of a W3C or WHATWG spec in a document fragment.
 
 Known issues
 ------------
