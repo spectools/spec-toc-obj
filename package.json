@@ -4,7 +4,7 @@
   "description": "Get all uppermost list element of the Table of Content of a W3C or WHATWG spec and returns them in a document fragment.",
   "main": "index.js",
   "scripts": {
-    "test": "mocha -u tdd --timeout 10000 ./test/*.js"
+    "test": "mocha --async-only -u tdd --timeout 10000 ./test/*.js"
   },
   "repository": {
     "type": "git",
