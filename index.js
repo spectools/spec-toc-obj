@@ -2,33 +2,44 @@
 
 var _filter = Array.prototype.filter;
 
+function ToC(doc) {
+    this.fragment = doc.createDocumentFragment();
+};
+
+ToC.prototype.push = function(node) {
+    this.fragment.appendChild(node.cloneNode(true));
+};
+
+ToC.prototype.isEmpty = function() {
+    return this.fragment.childNodes.length == 0;
+};
+
 function findToc(window) {
-    var fragment = window.document.createDocumentFragment();
+    var toc = new ToC(window.document);
     var node = window.document.querySelector(".toc");
     if (node) {
-        fragment.appendChild(node);
-    }
-    if (!node) {
+        toc.push(node);
+    } else {
         node = findTocTitle(window);
     }
-    collectLists(node, fragment);
+    collectLists(node, toc);
     
-    if (fragment.childNodes.length) return fragment;
+    if (!toc.isEmpty()) return toc.fragment;
     // Special case for Web-Component-based EDs. (Yes, that's a thing!)
     try {
         node = window.document.querySelector("spec-toc /deep/ ol");
         if (node) {
-            fragment.appendChild(node);
-            collectLists(node, fragment);
-            return fragment;
+            toc.push(node);
+            collectLists(node, toc);
+            return toc.fragment;
         }
     } catch(e) {}
     return null;
 }
 
-function collectLists(node, fragment) {
+function collectLists(node, toc) {
     while (node && (node = node.nextSibling)) {
-        if (isList(node)) fragment.appendChild(node);
+        if (isList(node)) toc.push(node);
         if (isH2(node)) return;
     }
 }
@@ -39,8 +50,7 @@ function isList(node) {
 }
 
 function isH2(node) {
-    var t = node.tagName;
-    return t == "H2";
+    return node.tagName == "H2";
 }
 
 
