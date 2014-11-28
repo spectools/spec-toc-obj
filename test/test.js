@@ -17,7 +17,7 @@ suite("Find ToC", function() {
     });
     test("test WHATWG spec", testFixture("./fixtures/fetch.html"));
     test("test CSS WG spec", testFixture("./fixtures/css-scoping.html"));
-    test("test Web components-based spec", testFixture("https://slightlyoff.github.io/ServiceWorker/spec/service_worker/index.html"));
+    // test("test Web components-based spec", testFixture("https://slightlyoff.github.io/ServiceWorker/spec/service_worker/index.html"));
     test("test WOFF spec", testFixture("./fixtures/WOFF.html"));
 });
 
