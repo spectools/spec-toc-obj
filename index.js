@@ -23,8 +23,12 @@ function findToc(window) {
         node = findTocTitle(window);
     }
     collectLists(node, toc);
-    
     if (!toc.isEmpty()) return toc.fragment;
+    
+    // Some specs don't use lists. Don't ask.
+    collectThingsThatShouldBeListsButAreRandomContainersInstead(node, toc);
+    if (!toc.isEmpty()) return toc.fragment;
+    
     // Special case for Web-Component-based EDs. (Yes, that's a thing!)
     try {
         node = window.document.querySelector("spec-toc /deep/ ol");
@@ -47,6 +51,17 @@ function collectLists(node, toc) {
 function isList(node) {
     var t = node.tagName;
     return t == "OL" || t == "UL";
+}
+
+function collectThingsThatShouldBeListsButAreRandomContainersInstead(node, toc) {
+    while (node && (node = node.nextSibling)) {
+        if (isRandomContainerThatContainsLinks(node)) toc.push(node);
+        if (isH2(node)) return;
+    }
+}
+
+function isRandomContainerThatContainsLinks(node) {
+    return !!(node.querySelector && node.querySelector("a"));
 }
 
 function isH2(node) {
