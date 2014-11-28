@@ -1,6 +1,6 @@
 {
   "name": "spec-toc-obj",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Get all uppermost list element of the Table of Content of a W3C or WHATWG spec and returns them in a document fragment.",
   "main": "index.js",
   "scripts": {
